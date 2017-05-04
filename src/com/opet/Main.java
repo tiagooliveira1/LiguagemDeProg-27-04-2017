@@ -41,10 +41,14 @@ public class Main
                 case 2:
                     System.out.println("Excluir aluno.");
                     System.out.println("Digite o código do aluno.");
+                    int codigoAluno = Reader.readInt();
+                    excluirAluno(codigoAluno);
                     break;
                 case 3:
-                    System.out.println("== Listando alunos == .");
-                    listAlunos(alunos);
+                    System.out.println("");
+                    System.out.println("===== Listando alunos =====");
+                    System.out.println("");
+                    listAlunos();
                     break;
 
                 default:
@@ -62,18 +66,28 @@ public class Main
 
     }
 
-    public static void listAlunos(Aluno []arrAlunos)
+    public static void listAlunos()
     {
         System.out.println("");
         System.out.println("Listagem de alunos inseridos");
         System.out.println("-----------------------------");
         /* varre o array global de alunos*/
-        for (int i=0;i<arrAlunos.length;i++) {
+        for (int i=0;i<alunos.length;i++) {
             // verifica se a posição é nula, e imprime caso não seja nulo
-            if (arrAlunos[i] != null)
-                System.out.println(arrAlunos[i].nome);
+            if (alunos[i] != null)
+                System.out.println(alunos[i].nome);
         }
         System.out.println("");
+    }
+    public static void excluirAluno(int idxAluno)
+    {
+        if(idxAluno < 0 || idxAluno >= idx) {
+            System.out.println("Aluno não disponível na lista");
+        } else {
+            for(int i = idx; i<(idxAluno); i++) {
+               // falta o código para excluir aluno, movendo o array
+            }
+        }
     }
 
 }
