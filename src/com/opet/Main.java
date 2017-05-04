@@ -3,13 +3,21 @@ package com.opet;
 
 import com.opet.util.Reader;
 
+
 public class Main
 {
 
+    // declara o índice idx como global
+    static int idx = 0;
+    // declara o array de alunos como global, para manipulá-lo de qualquer função
+    static Aluno []alunos = new Aluno[5];
+
     public static void main(String[] args) throws Exception
     {
+
         int op = -1;
-        Aluno []alunos = new Aluno[2];
+
+
         while(op != 0) {
             System.out.println("Digite a opção desejada:");
             System.out.println("1 - Incluir novo aluno");
@@ -26,8 +34,8 @@ public class Main
                     int alunoCodigo = Reader.readInt();
                     System.out.println("Digite o nome:");
                     String alunoNome = Reader.readString();
-                    alunos[alunos.length-1] = inserirAluno(alunoCodigo, alunoNome);
 
+                    inserirAluno(alunoCodigo, alunoNome);
 
                     break;
                 case 2:
@@ -47,11 +55,11 @@ public class Main
 
     }
 
-    public static Aluno inserirAluno(int Codigo, String nome)
+    public static void inserirAluno(int Codigo, String nome)
     {
-        Aluno alunoRegistro = new Aluno(nome, Codigo, "");
+        alunos[idx] = new Aluno(nome, Codigo, "");
+        idx = idx+1;
 
-        return alunoRegistro;
     }
 
     public static void listAlunos(Aluno []arrAlunos)
@@ -59,11 +67,13 @@ public class Main
         System.out.println("");
         System.out.println("Listagem de alunos inseridos");
         System.out.println("-----------------------------");
+        /* varre o array global de alunos*/
         for (int i=0;i<arrAlunos.length;i++) {
-            System.out.println(arrAlunos[i].nome);
+            // verifica se a posição é nula, e imprime caso não seja nulo
+            if (arrAlunos[i] != null)
+                System.out.println(arrAlunos[i].nome);
         }
         System.out.println("");
-
     }
 
 }
